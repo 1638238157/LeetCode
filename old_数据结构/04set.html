@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Set2(){
+            let items = {};
+            // let length = 0;
+            //检查元素是否存在
+            this.has = function (value){
+                return items.hasOwnProperty(value)
+            }
+            //添加元素
+            this.add = function (value){
+                if(!this.has(value)){
+                    items[value] = value;
+                    // length++;
+                    return value;
+                }
+                return false;
+            }
+            // 移除元素
+            this.remove = function (value){
+                if(this.has(value)){
+                    delete items[value];
+                    // length--;
+                    return true;
+                }
+                return null;
+            }
+            // 清除集合
+            this.clear = function (){
+                return items = {}
+            }
+            // 获取大小
+            this.size = function (){
+                // return length;
+                return Object.keys(items).length;
+            }
+            // 提取集合全部值并以数组形式返回
+            this.values = function (){
+                let values = [];
+                for(key in items){
+                    values.push(items[key])
+                }
+                return values;
+            }
+            this.getItems = function (){
+                return items;
+            }
+        }
+        let s = new Set2();
+        s.add(1);
+        s.add(2);
+        s.add(3);
+    </script>
+</body>
+</html>

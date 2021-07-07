@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function HashTable (){
+            let items = [];
+            //散列函数
+            //key -> number -> items[number]
+            function loseloseHashCode(key){
+                let hash = 0;
+                for (var i = 0; i < key.length; i++) {
+                    hash += key.charCodeAt(i);
+                }
+                return hash % 37
+            }
+            this.put = function(key,value){
+                let position = loseloseHashCode(key);
+                items[position] = value;
+            }
+            this.get = function(key){
+                return items[loseloseHashCode(key)]
+            }
+            this.remove = function(key,value){
+                items[loseloseHashCode[key]] = undefined;
+            }
+            this.getItems = function (key,value){
+                return items;
+            }
+        }
+        let ht = new HashTable();
+        ht.put('Jobs','Jobs@qq.com');
+        ht.put('Bob','Bob@qq.com');
+    </script>
+</body>
+</html>

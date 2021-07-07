@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Stack(){
+            let items = [];
+            // push 栈顶添加元素
+            this.push = function (element){
+                items.push(element);
+            }
+            // pop 删除栈顶元素
+            this.pop = function (){
+                return items.pop();
+            }
+            // 查看栈顶元素
+            this.peek = function (){
+                return items[items.length - 1];
+            }
+            // 检查栈是否为空
+            this.isEmpty = function (){
+                return !Boolean(items.length)
+            }
+            // 清除栈
+            this.clear = function (){
+                items = [];
+            }
+            // 获取栈的大小
+            this.size = function (){
+                return items.length;
+            }
+            // 获取栈
+            this.getItems = function (){
+                return items;
+            }
+        }
+        
+        // 10进制转2进制
+        function divBy2(number){
+            const stack = new Stack();
+            let yushu,string2 = '';
+            while(number > 0){
+                yushu = number % 2;
+                stack.push(yushu);
+                number = Math.floor(number / 2);
+            }
+            while(!stack.isEmpty()){
+                string2 += stack.pop();
+            }
+            return string2;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Tree(){
+            function Node(value){
+                this.value = value;
+                this.left = null;
+                this.right = null;
+            }
+            let root = null;
+            // 插入节点
+            function insertNode (node,newNode){
+                if(newNode.value > node.value){
+                    if(node.right == null){
+                        node.right = newNode;
+                    }else{
+                        insertNode(node.right,newNode);
+                    }
+                }else if(newNode.value < node.value){
+                    if(node.left == null){
+                        node.left = newNode
+                    }else{
+                        insertNode(node.left,newNode);
+                    }
+                }
+            }
+            this.insert = function (value){
+                let newNode = new Node(value);
+                if(root == null){
+                    root = newNode;
+                }else{
+                    insertNode(root,newNode);
+                }
+            }
+            // 搜索节点
+            this.search = function (value){
+
+            }
+            // 遍历节点
+            function traverse(node,callback){
+                if(node == null) return;
+                // callback(node.value); // 前序遍历
+                traverse(node.left,callback);
+                // callback(node.value); //中序遍历
+                traverse(node.right,callback);
+                callback(node.value); // 后续遍历
+            }
+            this.traverse = function (callback){
+                traverse(root,callback);
+            }
+            // 获取最小值
+            this.min = function (){
+                if(root == null) return null;
+                while(root && root.left){
+                    root = root.left;
+                }
+                return root.value;
+            }
+            // 获取最大值
+            this.max = function (){
+                if(root == null) return null;
+                while(root && root.right){
+                    root = root.right;
+                }
+                return root.value;
+            }
+            // 删除节点
+            this.remove = function (value){
+
+            }
+            this.getRoot = function (){
+                return root;
+            }
+        }
+        let t = new Tree;
+        t.insert(8)
+        t.insert(2)
+        t.insert(3)
+        t.insert(4)
+        t.insert(9)
+        t.insert(10)
+        t.insert(16)
+        function print(value){
+            console.log('value - '+value);
+        }
+        t.traverse(print);
+    </script>
+</body>
+</html>
